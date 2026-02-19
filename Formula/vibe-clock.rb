@@ -96,6 +96,7 @@ class VibeClock < Formula
 
   def install
     virtualenv_install_with_resources
+    bin.install_symlink libexec/"bin/vibe-clock"
   end
 
   test do
