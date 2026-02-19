@@ -3,8 +3,8 @@ class VibeClock < Formula
 
   desc "Track AI coding agent usage across Claude Code, Codex, and OpenCode"
   homepage "https://github.com/dexhunter/vibe-clock"
-  url "https://files.pythonhosted.org/packages/6e/e6/429c631835f6be80970ad5445f80d98cc46afc35f0fb70108d8bb905aac5/vibe_clock-1.2.0.tar.gz"
-  sha256 "f6c19b42abf06dce075a06e906710972b7375ef3ec05b725dc5a74de304d7129"
+  url "https://files.pythonhosted.org/packages/a4/de/ddb2f4f1fbdb6a7ab49b1ad6ae2f7704bbeb428f3e80d88cfed775cbf73f/vibe_clock-1.2.1.tar.gz"
+  sha256 "9dd97acfd3398f0dc85c3a2a69be5ab3aa5ecf8e60ed6098030473a618d30e78"
   license "MIT"
 
   depends_on "python@3.13"
