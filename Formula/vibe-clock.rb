@@ -92,16 +92,19 @@ class VibeClock < Formula
   def install
     python3 = "python3.13"
     venv = virtualenv_create(libexec, python3)
-    venv.pip_install resources.reject { |r| r.name == "pydantic" }
-    # pydantic-core is Rust-based; use pre-built wheel from PyPI instead of
-    # building from source (which requires maturin + Rust toolchain)
+    venv.pip_install resources
+    venv.pip_install_and_link buildpath
+    bin.install_symlink libexec/"bin/vibe-clock"
+  end
+
+  # Install pydantic-core from PyPI wheel in post_install to avoid
+  # Homebrew's dylib relocation fixer (the .so header lacks padding
+  # for the longer Cellar path, causing "Failed to fix install linkage")
+  def post_install
+    python3 = "python3.13"
     system python3, "-m", "pip", "--python=#{libexec}/bin/python",
            "install", "--no-deps", "--only-binary=:all:",
            "pydantic-core==2.41.5"
-    venv.pip_install resource("pydantic")
-    venv.pip_install_and_link buildpath
-    # Ensure binary is linked even if dylib relocation warnings occur
-    bin.install_symlink libexec/"bin/vibe-clock"
   end
 
   test do
