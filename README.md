@@ -1,17 +1,17 @@
-# homebrew-vibe
+# homebrew-tap
 
 Homebrew formula for [vibe-clock](https://github.com/dexhunter/vibe-clock).
 
 ## Installation
 
 ```bash
-brew install dexhunter/vibe/vibe-clock
+brew install dexhunter/tap/vibe-clock
 ```
 
 Or separately:
 
 ```bash
-brew tap dexhunter/vibe
+brew tap dexhunter/tap
 brew install vibe-clock
 ```
 

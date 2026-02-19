@@ -96,7 +96,8 @@ class VibeClock < Formula
     # pydantic-core is Rust-based; use pre-built wheel from PyPI instead of
     # building from source (which requires maturin + Rust toolchain)
     system python3, "-m", "pip", "--python=#{libexec}/bin/python",
-           "install", "--no-deps", "pydantic-core==2.41.5"
+           "install", "--no-deps", "--only-binary=:all:",
+           "pydantic-core==2.41.5"
     venv.pip_install resource("pydantic")
     venv.pip_install_and_link buildpath
     # Ensure binary is linked even if dylib relocation warnings occur
