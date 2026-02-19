@@ -5,6 +5,12 @@ Homebrew formula for [vibe-clock](https://github.com/dexhunter/vibe-clock).
 ## Installation
 
 ```bash
+brew install dexhunter/vibe/vibe-clock
+```
+
+Or separately:
+
+```bash
 brew tap dexhunter/vibe
 brew install vibe-clock
 ```
