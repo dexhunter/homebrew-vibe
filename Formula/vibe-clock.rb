@@ -99,6 +99,8 @@ class VibeClock < Formula
            "install", "--no-deps", "pydantic-core==2.41.5"
     venv.pip_install resource("pydantic")
     venv.pip_install_and_link buildpath
+    # Ensure binary is linked even if dylib relocation warnings occur
+    bin.install_symlink libexec/"bin/vibe-clock"
   end
 
   test do
