@@ -64,11 +64,6 @@ class VibeClock < Formula
     sha256 "4d351024c75c0f085a9febbb665ce8c0c6ec5d30e903bdb6394b7ede26aebb49"
   end
 
-  resource "pydantic-core" do
-    url "https://files.pythonhosted.org/packages/71/70/23b021c950c2addd24ec408e9ab05d59b035b39d97cdc1130e1bce647bb6/pydantic_core-2.41.5.tar.gz"
-    sha256 "08daa51ea16ad373ffd5e7606252cc32f07bc72b28284b6bc9c6df804816476e"
-  end
-
   resource "pygments" do
     url "https://files.pythonhosted.org/packages/b0/77/a5b8c569bf593b0140bde72ea885a803b82086995367bf2037de0159d924/pygments-2.19.2.tar.gz"
     sha256 "636cb2477cec7f8952536970bc533bc43743542f70392ae026374600add5b887"
@@ -95,8 +90,15 @@ class VibeClock < Formula
   end
 
   def install
-    virtualenv_install_with_resources
-    bin.install_symlink libexec/"bin/vibe-clock"
+    python3 = "python3.13"
+    venv = virtualenv_create(libexec, python3)
+    venv.pip_install resources.reject { |r| r.name == "pydantic" }
+    # pydantic-core is Rust-based; use pre-built wheel from PyPI instead of
+    # building from source (which requires maturin + Rust toolchain)
+    system python3, "-m", "pip", "--python=#{libexec}/bin/python",
+           "install", "--no-deps", "pydantic-core==2.41.5"
+    venv.pip_install resource("pydantic")
+    venv.pip_install_and_link buildpath
   end
 
   test do
