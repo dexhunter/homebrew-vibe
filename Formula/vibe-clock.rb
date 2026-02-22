@@ -1,8 +1,8 @@
 class VibeClock < Formula
-  desc "Track AI coding agent usage across Claude Code, Codex, and OpenCode"
+  desc "Track AI coding agent usage across Claude Code, Codex, Gemini CLI, and OpenCode"
   homepage "https://github.com/dexhunter/vibe-clock"
   url "https://github.com/dexhunter/vibe-clock/releases/download/v1.4.0/vibe-clock-darwin-arm64.tar.gz"
-  sha256 "4f8660a16c861df33b4eaef0445c8b9b0b82b42ae5ae2b3d6ad7bb1a744645cf"
+  sha256 "1a5bb04d6c2865141175e9adc5558ce4e75741c26b06c1e1dfc46ce19e8cfaaa"
   version "1.4.0"
   license "MIT"
 
